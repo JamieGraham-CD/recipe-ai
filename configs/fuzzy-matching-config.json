@@ -1,0 +1,48 @@
+{
+    "apiVersion": "run.googleapis.com/v1",
+    "kind": "Job",
+    "gcp_folder_path":"matching/levenshtein-jaccard-equal",
+    "fuzzy_mode":"levenshtein-jaccard-equal",
+    "experiment": {
+      "source_type":"jde",
+      "run_name":"splay",
+      "top_k":100,
+      "total_skus_to_map":100,
+      "top_k_levenshtein":20,
+      "sub_run_name":"levenshtein-faiss",
+      "model_choice":"gemini"
+    },
+    "metadata": {
+      "deployment_job_name": "ai-product-mapper-fuzzy",
+      "bucket_name":"data-extraction-services",
+      "namespace": "default",
+      "chunk_task_size":1,
+      "upload_to_gcp":"True",
+      "output_logs_to_local_dir":"True",
+      "inference_df_path":"AIProductMapper/subattribution/jde_test_set.csv"
+    },
+    "spec": {
+              "containers": 
+                {
+                  "image": "gcr.io/cd-ds-384118/ai-product-mapper-fuzzy:latest",
+                  "name": "ai_product_mapper",
+                  "region": "us-central1",
+                  "env": [
+                    {
+                      "name": "BUCKET_NAME",
+                      "value": "data-extraction-services"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "memory": "8Gi",
+                      "cpu": "4"
+                    }
+                  }
+                },
+              "task_count": 3000,
+              "parallelism": 3000,
+              "timeout_seconds": 7200
+            }
+  }
+  

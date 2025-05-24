@@ -1,0 +1,11 @@
+{
+  "prompt_path":"./Prompts/v2_prompts",
+  "bucket_name":"data-extraction-services",
+  "site_path":"Canteen-Scraper-v2/sitemaps/sample_sitemap.csv",
+  "base_path":"Canteen-Scraper-v2/Adam-Testing",
+  "folder_name":"2025-02-28-product-image-vision-test",
+  "upload_to_gcp":"True",
+  "output_logs_to_local_dir":"True"
+}
+  
+

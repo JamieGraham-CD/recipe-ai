@@ -1,0 +1,21 @@
+{
+    "project_id":"cd-ds-384118",
+    "secret_name":"generalized-parser-des",
+    "max_chunk_size":50000,
+    "output_filepath":"./outputs/output.csv",
+    "input_type":"images",
+    "user_input_path":"./inputs/tmp_download_images_48146/",
+    "dynamic_schema_prompt":"./prompts/dynamic_schema_prompt.txt",
+    "dynamic_schema_instructions":"./prompts/dynamic_schema_instructions.txt",
+    "system_prompt_path":"./prompts/system_prompt.txt",
+    "merge_system_prompt":"./prompts/merge_images_system_prompt.txt",
+    "run_id":"sdfdsr2398w90r",
+    "max_llm_retries":3,
+    "base_temperature":0.2,
+    "llm-model-deployment-name":"docs-dev-struct-4o",
+    "use_llm_vision": true,
+    "gcp_png_path":"Canteen-Scraper-v2/Adam-Testing/48146-General-Mills-Nature-Valley-Biscuits-with-Cinnamon-Almond-Butter-1.35oz/",
+    "clear_image_download_after":false,
+    "image_suffix":"product_image.png",
+    "metadata_filter":{"url":"https://www.generalmillsfoodservice.com/products/category/snacks/bars/nature-valley/biscuits-almond-butter"}
+}

@@ -1,0 +1,57 @@
+{
+    "apiVersion": "run.googleapis.com/v1",
+    "kind": "Job",
+    "source_type":"jde",
+    "run_name":"jde-cloud-job-test",
+    "top_k":50,
+    "total_skus_to_map":10,
+    "top_k_levenshtein":50,
+    "sub_run_name":"test_1",
+    "model_choice":"gemini",
+    "gcp_folder_path":"AIProductMapper/matching/jde-cloud-job-test",
+    "fuzzy_mode":"levenshtein-jaccard-10-90",
+    "skip_fuzzy_matching":false,
+    "skip_subattribution":false,
+    "skip_hybrid_retrieval":false,
+    "data_load_method": "snowflake",
+    "size_filter_on":false,
+    "source_data_gcp_path":"AIProductMapper/example-snowflake/full_data/minimal-tests/jde-test-10-apr-24-2025.csv",
+    "metadata": {
+      "deployment_job_name": "ai-mapper-main",
+      "bucket_name":"data-extraction-services",
+      "namespace": "default",
+      "chunk_task_size":1,
+      "upload_to_gcp":"False",
+      "output_logs_to_local_dir":"True"
+    },
+    "spec": {   
+              "containers": 
+                {
+                  "image": "gcr.io/cd-ds-384118/ai-product-mapper-main:latest",
+                  "name": "ai_product_mapper_main",
+                  "region": "us-central1",
+                  "env": [
+                    {
+                      "name": "BUCKET_NAME",
+                      "value": "data-extraction-services"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "memory": "8Gi",
+                      "cpu": "4"
+                    }
+                  }
+                },
+              "task_count": 1,
+              "parallelism": 1,
+              "timeout_seconds": 7200
+            },
+    "size_backfill": {
+              "enable": true,
+              "google_num_results": 5,
+              "scrape_concurrency": 8,
+              "prefer_scrape_size": true
+          }
+        
+  }
